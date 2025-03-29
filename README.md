@@ -2,9 +2,10 @@
 Arquivos Referentes a Pós ES - Professora Mariana C Martins
 
 # Conteudo :
-- identificação do problema,
-- diagramas,
--  plano de testes e lista de preocupações éticas
+- identificação do problema (ES - Identificação de Problemas.pdf)
+- diagramas (ES_UFG.drawio.png)
+-  plano de testes e lista de preocupações éticas (Plano_de_Teste.md)
+-  lista de preocupações éticas (Lista_de_Preocupacoes_Eticas.md)
 
 #Alunos:
 - Marcos Vinicius Satil Medeiros
