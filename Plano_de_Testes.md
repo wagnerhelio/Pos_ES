@@ -1,13 +1,13 @@
-# Plano de Teste
+# 🧪 Plano de Teste
 
 **Sistema:** Agente de Resposta LAI Automatizada  
 **Versão:** 1.0
 
 ## Histórico das alterações
 
-| Data       | Versão | Descrição       | Autor(a)         |
-|------------|--------|------------------|------------------|
-| 29/03/2025 | 1.0    | Release inicial  | Danielle Farias  |
+| Data       | Versão | Descrição       | Autor(es)                                  |
+|------------|--------|------------------|---------------------------------------------|
+| 29/03/2025 | 1.0    | Release inicial  | Marcos Vinicius Satil Medeiros, Pedro Koziel Diniz, Wagner Helio da Silva Filho |
 
 ---
 
@@ -59,7 +59,6 @@ Objetivos:
 ---
 
 ### 3.1 - API TextToSQL
-
 - **Objetivo:** Verificar se os prompts são corretamente convertidos em SQL para o DW.
 - **Técnica:** (x) Automática  
 - **Estágio do teste:** Integração (x)  
@@ -69,7 +68,6 @@ Objetivos:
 ---
 
 ### 3.2 - Integração com DW (SQL/NoSQL)
-
 - **Objetivo:** Validar se os dados são recuperados corretamente do DW.
 - **Técnica:** (x) Manual / (x) Automática  
 - **Estágio do teste:** Integração (x)  
@@ -79,7 +77,6 @@ Objetivos:
 ---
 
 ### 3.3 - Validação com Guardrails AI
-
 - **Objetivo:** Verificar se as respostas seguem políticas definidas e são auditáveis.
 - **Técnica:** (x) Automática  
 - **Estágio do teste:** Sistema (x)  
@@ -89,7 +86,6 @@ Objetivos:
 ---
 
 ### 3.4 - Interface Django / WhatsApp
-
 - **Objetivo:** Garantir que a requisição da LAI e retorno de resposta estejam funcionais.
 - **Técnica:** (x) Manual  
 - **Estágio do teste:** Aceitação (x)  
@@ -99,7 +95,6 @@ Objetivos:
 ---
 
 ### 3.5 - Segurança e Logs
-
 - **Objetivo:** Validar que os acessos e execuções estão sendo registrados de forma segura.
 - **Técnica:** (x) Manual / (x) Automática  
 - **Estágio do teste:** Sistema (x)  
@@ -126,12 +121,12 @@ Objetivos:
 | Tipo de teste        | Duração  | Início      | Término     |
 |----------------------|----------|-------------|-------------|
 | Planejamento         | 2 dias   | 01/04/2025  | 02/04/2025  |
-| Projetar testes      | 3 dias   | 03/04/2025  | 05/04/2025  |
-| Implementar testes   | 4 dias   | 06/04/2025  | 09/04/2025  |
-| Executar testes      | 5 dias   | 10/04/2025  | 15/04/2025  |
-| Avaliar resultados   | 2 dias   | 16/04/2025  | 17/04/2025  |
+| Projetar testes      | 5 dias   | 03/04/2025  | 07/04/2025  |
+| Implementar testes   | 10 dias  | 08/04/2025  | 17/04/2025  |
+| Executar testes      | 30 dias  | 18/04/2025  | 17/05/2025  |
+| Avaliar resultados   | 5 dias   | 18/05/2025  | 22/05/2025  |
+| Testes adicionais e iterações  | até 31/12/2025 | 23/05/2025 | 31/12/2025 |
 
 ---
 
-> **Observação:** Este plano é baseado na arquitetura desenhada no projeto de automação de respostas LAI com uso de LLMs, frameworks locais e integração segura de dados. Ele será revisto a cada iteração.
-
+> **Observação:** Plano de teste contínuo até o final do ano, com ciclos de avaliação mensal e integração com entregas parciais para a SSP-GO.
