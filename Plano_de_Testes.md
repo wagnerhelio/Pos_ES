@@ -1,417 +1,137 @@
 # Plano de Teste
 
-**nome do sistema**
-
-*versão x.x*
+**Sistema:** Agente de Resposta LAI Automatizada  
+**Versão:** 1.0
 
 ## Histórico das alterações
 
-   Data    | Versão |    Descrição   | Autor(a)
------------|--------|----------------|-----------------
-dd/mm/aaaa |  x.x   | Release incial | Danielle Farias
+| Data       | Versão | Descrição       | Autor(a)         |
+|------------|--------|------------------|------------------|
+| 29/03/2025 | 1.0    | Release inicial  | Danielle Farias  |
 
+---
 
 ## 1 - Introdução
 
-Este documento descreve os requisitos a testar, os  tipos de testes definidos para cada iteração, os recursos de hardware e software a serem empregados e o cronograma dos testes ao longo do projeto. As seções referentes aos requisitos, recursos e cronograma servem para permitir ao gerente do projeto acompanhar a evolução dos testes.
+Este plano de teste refere-se ao sistema de resposta automatizada a pedidos de acesso à informação (LAI), utilizando LLMs, integração de bases relacionais e NoSQL, e um fluxo de dados baseado no DW. A arquitetura foi implementada com uso de Django, Guardrails, Ollama e dashboards em Power BI/Qlik.
 
-Com esse documento, você deve:
-- Identificar informações de projeto existentes e os componentes de software que devem ser testados.
-- Listar os Requisitos a testar.
-- Recomendar e descrever as estratégias de teste a serem empregadas.
-- Identificar os recursos necessários e prover uma estimativa dos esforços de teste.
-- Listar os elementos resultantes do projeto de testes.
+Objetivos:
+- Validar a funcionalidade do pipeline de dados e da interface de requisição/resposta.
+- Verificar consistência das respostas da LLM.
+- Garantir integridade dos dados e segurança no processo.
 
-Também é possível apresentar aqui o programa que será testado.
+---
 
 ## 2 - Requisitos a Testar
 
-Esta seção deve conter os casos de uso e requisitos não funcionais identificados como objetos dos testes ao longo do desenvolvimento do projeto.
-Como, em geral, os requisitos a testar são obtidos diretamente dos requisitos do sistema, esta seção é concebida como opcional. Assim sendo, sempre que novos requisitos a testar, que não constem como requisitos do sistema, forem identificados ou, simplesmente, por questões de organização e clareza, esta seção deve ser preenchida.
-Dependendo das informações disponíveis, essa seção pode começar a ser preenchida já nas primeiras iterações do ciclo de vida a partir do documento de requisitos.
-
-Caso seja necessário, liste aqui os requisitos a testar subdivididos em casos de uso e requisitos não-funcionais.
-
 ### Casos de uso:
 
-Identificador do caso de uso | Nome do caso de uso
------------------------------|---------------------
-id UC1                       |       nome UC1
-id UC2                       |       nome UC2
+| Identificador | Nome do caso de uso                          |
+|---------------|-----------------------------------------------|
+| UC01          | Receber requisição de LAI via interface web   |
+| UC02          | Gerar prompt estruturado a partir da LAI      |
+| UC03          | Traduzir prompt para SQL com Text2SQL         |
+| UC04          | Executar consulta no DW (SQL e NoSQL)         |
+| UC05          | Validar resposta com LLM Guardrails AI        |
+| UC06          | Responder via canal (WhatsApp, Web, etc.)     |
+| UC07          | Registrar logs de acesso e resposta           |
 
 ### Requisitos não-funcionais:
 
-Identificador do requisito   | Nome do requisito
------------------------------|---------------------
-id req1                      |      nome req1
-id req2                      |      nome req2
+| Identificador | Nome do requisito                  |
+|---------------|-------------------------------------|
+| RNF01         | Tempo médio de resposta < 5s        |
+| RNF02         | Taxa de erro nas respostas < 2%     |
+| RNF03         | Log e auditoria de todas as ações   |
+| RNF04         | Integração segura entre sistemas    |
 
+---
 
-## 3 - Tipos de teste
+## 3 - Tipos de Teste
 
-Esta seção deve conter os tipos de testes escolhidos para cada iteração do projeto.
-Pode-se definir inicialmente apenas os tipos de testes que serão usadas na próxima iteração, mas é possível também já registrar eventuais tipos de teste que se espera utilizar nas demais iterações. 
-Com base no guia de testes, indique os tipos de testes que melhor se adéquam aos requisitos, tipo da aplicação e seus recursos disponíveis e, caso necessário complemente ou forneça mais detalhes da técnica e dos critérios de completude sugeridos no guia para cada tipo de teste indicado.
+- Teste de interface (Django e canais externos)
+- Teste de integração (LLM + Guardrails + DW + API Text2SQL)
+- Teste de segurança (controle de acesso, logs, prompt injection)
+- Teste de performance (tempo de resposta da API e LLM)
+- Teste de persistência (logs, requisições e respostas)
+- Teste de aceitação (respostas corretas para LAIs reais e simuladas)
 
-- Teste de interface de usuário;
-- Teste de performance;
-- Teste de carga;
-- Teste de stress;
-- Teste de segurança e controle de acesso;
-- Teste de instalação;
-- Entre outros.
+---
 
-### 3.1 - Métodos da Classe 
+### 3.1 - API TextToSQL
 
-Para teste de funcionalidade.
-Aqui deve-se verificar se cada classe retorna o esperado.
-Se possível usar teste automatizado.
+- **Objetivo:** Verificar se os prompts são corretamente convertidos em SQL para o DW.
+- **Técnica:** (x) Automática  
+- **Estágio do teste:** Integração (x)  
+- **Abordagem:** Caixa branca (x), Caixa preta (x)  
+- **Responsáveis:** Equipe de backend/API
 
-<br/>
-<table>
-    <tr>
-        <th>
-            Objetivo
-        </th>
-        <th colspan="4">
-            descreva aqui o objetivo
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Técnica:
-        </th>
-        <th colspan="2">
-            (x) manual
-        </th>
-        <th colspan="2">
-            (x) automática
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Estágio do teste
-        </th>
-        <th>
-            Integração ( )
-        </th>
-        <th>
-            Sistema ( )
-        </th>
-        <th>
-            Unidade (x)
-        </th>
-        <th>
-            Aceitação ( )
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Abordagem do teste
-        </th>
-        <th colspan="2">
-            Caixa branca (x)
-        </th>
-        <th colspan="2">
-            Caixa preta (x)
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Responsável(is)
-        </th>
-        <th colspan="4">
-            Programador(es) ou equipe de testes
-        </th>
-    </tr>
-</table>
-<br/>
+---
 
-### 3.2 - Persistência de Dados
+### 3.2 - Integração com DW (SQL/NoSQL)
 
-Para teste de integridade de dados e do banco de dados.
-Aqui deve-se verificar se os dados não se perdem ao desligar o programa. Se o programa consegue se recuperar em caso de falha ou fechamento repentino.
-Se possível usar teste automatizado.
+- **Objetivo:** Validar se os dados são recuperados corretamente do DW.
+- **Técnica:** (x) Manual / (x) Automática  
+- **Estágio do teste:** Integração (x)  
+- **Abordagem:** Caixa preta (x)  
+- **Responsáveis:** DBA / Eng. de dados
 
-<br/>
-<table>
-    <tr>
-        <th>
-            Objetivo
-        </th>
-        <th colspan="4">
-            Verificar se dados são mantidos após súbito desligamento do programa .
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Técnica:
-        </th>
-        <th colspan="2">
-            (x) manual
-        </th>
-        <th colspan="2">
-            (x) automática
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Estágio do teste
-        </th>
-        <th>
-            Integração ( )
-        </th>
-        <th>
-            Sistema (x)
-        </th>
-        <th>
-            Unidade ( )
-        </th>
-        <th>
-            Aceitação ( )
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Abordagem do teste
-        </th>
-        <th colspan="2">
-            Caixa branca ( )
-        </th>
-        <th colspan="2">
-            Caixa preta (x)
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Responsável(is)
-        </th>
-        <th colspan="4">
-            Programador(es) ou equipe de testes
-        </th>
-    </tr>
-</table>
-<br/>
+---
 
-### 3.3 - Integração dos Componentes
+### 3.3 - Validação com Guardrails AI
 
-Para teste de funcionalidade.
-Aqui deve-se verificar se as classes e métodos conseguem fazer a integração entre elas para uma sequência de ações do programa.
-Se possível usar teste automatizado.
+- **Objetivo:** Verificar se as respostas seguem políticas definidas e são auditáveis.
+- **Técnica:** (x) Automática  
+- **Estágio do teste:** Sistema (x)  
+- **Abordagem:** Caixa preta (x)  
+- **Responsáveis:** Cientista de dados / QA
 
-<br/>
-<table>
-    <tr>
-        <th>
-            Objetivo
-        </th>
-        <th colspan="4">
-            descreva aqui o objetivo
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Técnica:
-        </th>
-        <th colspan="2">
-            (x) manual
-        </th>
-        <th colspan="2">
-            (x) automática
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Estágio do teste
-        </th>
-        <th>
-            Integração (x)
-        </th>
-        <th>
-            Sistema ( )
-        </th>
-        <th>
-            Unidade ( )
-        </th>
-        <th>
-            Aceitação ( )
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Abordagem do teste
-        </th>
-        <th colspan="2">
-            Caixa branca (x)
-        </th>
-        <th colspan="2">
-            Caixa preta (x)
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Responsável(is)
-        </th>
-        <th colspan="4">
-            Programador(es) ou equipe de testes
-        </th>
-    </tr>
-</table>
-<br/>
+---
 
-### 3.4 - Tempo de Resposta
+### 3.4 - Interface Django / WhatsApp
 
-Para teste de funcionalidade.
-Aqui deve-se verificar se o tempo de respostas das ações do programa são consideradas aceitáveis.
-Se possível usar teste automatizado.
+- **Objetivo:** Garantir que a requisição da LAI e retorno de resposta estejam funcionais.
+- **Técnica:** (x) Manual  
+- **Estágio do teste:** Aceitação (x)  
+- **Abordagem:** Caixa preta (x)  
+- **Responsáveis:** QA / Time funcional
 
-<br/>
-<table>
-    <tr>
-        <th>
-            Objetivo
-        </th>
-        <th colspan="4">
-            descreva aqui o objetivo
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Técnica:
-        </th>
-        <th colspan="2">
-            ( ) manual
-        </th>
-        <th colspan="2">
-            ( ) automática
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Estágio do teste
-        </th>
-        <th>
-            Integração ( )
-        </th>
-        <th>
-            Sistema ( )
-        </th>
-        <th>
-            Unidade ( )
-        </th>
-        <th>
-            Aceitação ( )
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Abordagem do teste
-        </th>
-        <th colspan="2">
-            Caixa branca ( )
-        </th>
-        <th colspan="2">
-            Caixa preta ( )
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Responsável(is)
-        </th>
-        <th colspan="4">
-            Programador(es) ou equipe de testes
-        </th>
-    </tr>
-</table>
-<br/>
+---
 
-### 3.5 - Animação
+### 3.5 - Segurança e Logs
 
-Para teste de funcionalidade (para games, principalmente, mas não somente).
-Aqui deve-se verificar se as animações existentes no programa são disparadas quando devem e se seguem uma sequência lógica.
-Se possível usar teste automatizado.
+- **Objetivo:** Validar que os acessos e execuções estão sendo registrados de forma segura.
+- **Técnica:** (x) Manual / (x) Automática  
+- **Estágio do teste:** Sistema (x)  
+- **Abordagem:** Caixa branca (x)  
+- **Responsáveis:** DevSecOps / Backend
 
-<br/>
-<table>
-    <tr>
-        <th>
-            Objetivo
-        </th>
-        <th colspan="4">
-            descreva aqui o objetivo
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Técnica:
-        </th>
-        <th colspan="2">
-            ( ) manual
-        </th>
-        <th colspan="2">
-            ( ) automática
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Estágio do teste
-        </th>
-        <th>
-            Integração ( )
-        </th>
-        <th>
-            Sistema ( )
-        </th>
-        <th>
-            Unidade ( )
-        </th>
-        <th>
-            Aceitação ( )
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Abordagem do teste
-        </th>
-        <th colspan="2">
-            Caixa branca ( )
-        </th>
-        <th colspan="2">
-            Caixa preta ( )
-        </th>
-    </tr>
-    <tr>
-        <th>
-            Responsável(is)
-        </th>
-        <th colspan="4">
-            Programador(es) ou equipe de testes
-        </th>
-    </tr>
-</table>
-<br/>
-
-### 3.6 - Efeitos Sonoros
-
+---
 
 ## 4 - Recursos
 
-Esta seção deve descrever os recursos humanos, de ambiente de teste (hardware e software) e de ferramentas de automatização de testes necessários para execução dos testes que devem ser descritos nas subseções que seguem.
+### 4.1 - Ambiente de Teste
 
-### 4.1 - Ambiente de teste - Software e Hardware
+- **Hardware:** Servidor Linux, 16GB RAM, 8 cores, GPU opcional.
+- **Software:** PostgreSQL, MongoDB, Django, Power BI, Qlik, Ollama.
 
-Descreva aqui o hardware e sua configuração, e o software. Por exemplo, o sistema operacional, browsers, servidor web, etc.
-### 4.2 - Ferramenta de teste
+### 4.2 - Ferramentas de Teste
 
-Descreva aqui as ferramentas específicas de teste usadas no projeto.
+- Postman (API), Pytest, Selenium, JMeter, Guardrails AI, Prometheus (monitoramento).
 
+---
 
 ## 5 - Cronograma
 
-Tipo de teste      | Duração | data de início | data de término
--------------------|---------|----------------|-----------------
-planejar teste     |         | dd/mm/aaaa     | dd/mm/aaaa
-projetar teste     |         | dd/mm/aaaa     | dd/mm/aaaa
-implementar teste  |         | dd/mm/aaaa     | dd/mm/aaaa
-executar teste     |         | dd/mm/aaaa     | dd/mm/aaaa
-avaliar teste      |         | dd/mm/aaaa     | dd/mm/aaaa
+| Tipo de teste        | Duração  | Início      | Término     |
+|----------------------|----------|-------------|-------------|
+| Planejamento         | 2 dias   | 01/04/2025  | 02/04/2025  |
+| Projetar testes      | 3 dias   | 03/04/2025  | 05/04/2025  |
+| Implementar testes   | 4 dias   | 06/04/2025  | 09/04/2025  |
+| Executar testes      | 5 dias   | 10/04/2025  | 15/04/2025  |
+| Avaliar resultados   | 2 dias   | 16/04/2025  | 17/04/2025  |
+
+---
+
+> **Observação:** Este plano é baseado na arquitetura desenhada no projeto de automação de respostas LAI com uso de LLMs, frameworks locais e integração segura de dados. Ele será revisto a cada iteração.
+
