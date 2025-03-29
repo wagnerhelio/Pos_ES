@@ -1,4 +1,4 @@
-# 🧪 Plano de Teste
+# Plano de Teste
 
 **Sistema:** Agente de Resposta LAI Automatizada  
 **Versão:** 1.0
