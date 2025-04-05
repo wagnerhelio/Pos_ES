@@ -14,3 +14,6 @@ Arquivos Referentes a Pós ES - Professora Mariana C Martins
 
 Canva:
 https://www.canva.com/design/DAGhKXJ2jVo/sIBY1dWGVTjBRdcFYwvAKg/edit?utm_content=DAGhKXJ2jVo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+Tarefa de NLP: Normalização e Reconhecimento de Entidades Nomeadas em Textos Não-Padronizados (Named Entity Recognition + Text Normalization em Domínios Informais)
+https://docs.google.com/document/d/1-n56ACETqhpauAia_E9Ebp5AmjYcOjWUg9g4uzNhj84/edit?usp=sharing
